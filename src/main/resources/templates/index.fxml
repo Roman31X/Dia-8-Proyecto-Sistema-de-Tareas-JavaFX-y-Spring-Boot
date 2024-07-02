@@ -10,12 +10,12 @@
          <font>
             <Font name="Arial Unicode MS" size="28.0" />
          </font></Label>
-      <TableView fx:id="tareaTabla" layoutX="217.0" layoutY="112.0" prefHeight="200.0" prefWidth="320.0">
+      <TableView fx:id="tareaTabla" layoutX="188.0" layoutY="116.0" prefHeight="200.0" prefWidth="397.0">
         <columns>
           <TableColumn fx:id="idTareaColumna" prefWidth="75.0" text="ID" />
-          <TableColumn fx:id="tareaColumna" prefWidth="75.0" text="Tarea" />
-            <TableColumn fx:id="responsableColumna" prefWidth="92.199951171875" text="Responsable" />
-            <TableColumn fx:id="estatusColumna" prefWidth="75.0" text="Estatus" />
+          <TableColumn fx:id="tareaColumna" prefWidth="134.20001220703125" text="Tarea" />
+            <TableColumn fx:id="responsableColumna" prefWidth="97.0" text="Responsable" />
+            <TableColumn fx:id="estatusColumna" prefWidth="91.79998779296875" text="Estatus" />
         </columns>
       </TableView>
    </children>

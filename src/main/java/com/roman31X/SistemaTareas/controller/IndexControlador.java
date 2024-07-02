@@ -42,6 +42,7 @@ public class IndexControlador implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         tareaTabla.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
         configurarColumnas();
+        listarTareas();
     }
 
     private void configurarColumnas(){
@@ -49,5 +50,12 @@ public class IndexControlador implements Initializable {
         tareaColumna.setCellValueFactory(new PropertyValueFactory<>("nombreTarea"));
         responsableColumna.setCellValueFactory(new PropertyValueFactory<>("responsable"));
         estatusColumna.setCellValueFactory(new PropertyValueFactory<>("estatus"));
+    }
+
+    private void listarTareas(){
+        logger.info("Ejecutando lista de tareas");
+        tareaList.clear();
+        tareaList.addAll(tareaServicio.listarTarea());
+        tareaTabla.setItems(tareaList);
     }
 }
