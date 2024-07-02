@@ -45,6 +45,8 @@ public class IndexControlador implements Initializable {
     @FXML
     private TextField estatusTexto;
 
+    private Integer idTareaInterna;
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         tareaTabla.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
@@ -66,14 +68,6 @@ public class IndexControlador implements Initializable {
         tareaTabla.setItems(tareaList);
     }
 
-    private void mostrarMensaje(String tirulo, String mensaje){
-        Alert alerta =  new Alert(Alert.AlertType.INFORMATION);
-        alerta.setTitle(tirulo);
-        alerta.setHeaderText(null);
-        alerta.setContentText(mensaje);
-        alerta.showAndWait();
-    }
-
     public void agregarTarea(){
         if(nombreTareaTexto.getText().isEmpty()){
             mostrarMensaje("Error Validación","Debe proporcionar una Tarea");
@@ -82,6 +76,7 @@ public class IndexControlador implements Initializable {
         }else{
             var tarea = new Tarea();
             recolectarDatosFormulario(tarea);
+            tarea.setIdTarea(null);
             tareaServicio.guardarTarea(tarea);
             mostrarMensaje("Información","Tarea Agregada con Éxito!!");
             limpiarFormulario();
@@ -89,15 +84,55 @@ public class IndexControlador implements Initializable {
         }
     }
 
+    public void cargarTareaFormulario(){
+        var tarea = tareaTabla.getSelectionModel().getSelectedItem();
+        if(tarea != null){
+            idTareaInterna = tarea.getIdTarea();
+            nombreTareaTexto.setText(tarea.getNombreTarea());
+            responsableTexto.setText(tarea.getResponsable());
+            estatusTexto.setText(tarea.getEstatus());
+        }
+    }
+
     private void recolectarDatosFormulario(Tarea tarea){
+        if(idTareaInterna != null)
+            tarea.setIdTarea(idTareaInterna);
         tarea.setNombreTarea(nombreTareaTexto.getText());
         tarea.setResponsable(responsableTexto.getText());
         tarea.setEstatus(estatusTexto.getText());
     }
 
+    public void modificarTarea(){
+        if(idTareaInterna == null){
+            mostrarMensaje("Información","Debe de seleccionar una tarea del registro");
+            return;
+        }
+        if(nombreTareaTexto.getText().isEmpty()){
+            mostrarMensaje("Error Validación","Debe de proporcionar un nombre a la Tarea");
+            nombreTareaTexto.requestFocus();
+            return;
+        }
+        var tarea = new Tarea();
+        recolectarDatosFormulario(tarea);
+        tareaServicio.guardarTarea(tarea);
+        mostrarMensaje("Información","Tarea Modificada");
+        limpiarFormulario();
+        listarTareas();
+    }
+
     private void limpiarFormulario(){
+        idTareaInterna = null;
         nombreTareaTexto.clear();
         responsableTexto.clear();
         estatusTexto.clear();
     }
+
+    private void mostrarMensaje(String tirulo, String mensaje){
+        Alert alerta =  new Alert(Alert.AlertType.INFORMATION);
+        alerta.setTitle(tirulo);
+        alerta.setHeaderText(null);
+        alerta.setContentText(mensaje);
+        alerta.showAndWait();
+    }
+
 }

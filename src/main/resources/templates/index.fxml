@@ -10,7 +10,7 @@
          <font>
             <Font name="Bank Gothic Medium BT" size="32.0" />
          </font></Label>
-      <TableView fx:id="tareaTabla" layoutX="179.0" layoutY="54.0" prefHeight="200.0" prefWidth="408.0">
+      <TableView fx:id="tareaTabla" layoutX="179.0" layoutY="54.0" onMouseClicked="#cargarTareaFormulario" prefHeight="200.0" prefWidth="408.0">
         <columns>
           <TableColumn fx:id="idTareaColumna" prefWidth="75.0" text="ID" />
           <TableColumn fx:id="tareaColumna" prefWidth="143.39999389648438" text="Tarea" />
@@ -47,7 +47,7 @@
                   <Font name="Bank Gothic Medium BT" size="12.0" />
                </font>
             </Button>
-            <Button fx:id="modificarBoton" layoutX="154.0" layoutY="12.0" mnemonicParsing="false" style="-fx-background-color: #1d3557;" text="MODIFICAR" textFill="WHITE">
+            <Button fx:id="modificarBoton" layoutX="154.0" layoutY="12.0" mnemonicParsing="false" onAction="#modificarTarea" style="-fx-background-color: #1d3557;" text="MODIFICAR" textFill="WHITE">
                <font>
                   <Font name="Bank Gothic Medium BT" size="12.0" />
                </font>
