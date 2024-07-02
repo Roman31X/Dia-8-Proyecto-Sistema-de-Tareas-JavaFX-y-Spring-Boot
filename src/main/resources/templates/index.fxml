@@ -52,12 +52,12 @@
                   <Font name="Bank Gothic Medium BT" size="12.0" />
                </font>
             </Button>
-            <Button fx:id="eliminarBoton" layoutX="274.0" layoutY="12.0" mnemonicParsing="false" style="-fx-background-color: #ff0000;" text="ELIMINAR" textFill="WHITE">
+            <Button fx:id="eliminarBoton" layoutX="274.0" layoutY="12.0" mnemonicParsing="false" onAction="#eliminarTarea" style="-fx-background-color: #ff0000;" text="ELIMINAR" textFill="WHITE">
                <font>
                   <Font name="Bank Gothic Medium BT" size="12.0" />
                </font>
             </Button>
-            <Button fx:id="limpiarBoton" layoutX="383.0" layoutY="12.0" mnemonicParsing="false" style="-fx-background-color: #fff67d;" text="LIMPIAR FORMULARIO">
+            <Button fx:id="limpiarBoton" layoutX="383.0" layoutY="12.0" mnemonicParsing="false" onAction="#limpiarFormulario" style="-fx-background-color: #fff67d;" text="LIMPIAR FORMULARIO">
                <font>
                   <Font name="Bank Gothic Medium BT" size="12.0" />
                </font>
